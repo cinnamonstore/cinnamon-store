@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cinnamon</title>
+<style>
+  :root{
+    --bg:#fff8f5;
+    --card:#fffdfc;
+    --text:#5f4a48;
+    --muted:#987b77;
+    --pink:#ffd7d2;
+    --green:#d8f0df;
+    --yellow:#ffe8a9;
+    --cream:#fff2c8;
+    --shadow:0 10px 28px rgba(183,139,129,.12);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:system-ui,-apple-system,"Segoe UI","Noto Sans Thai",sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(circle at 10% 10%,#fff0eb 0 9%,transparent 10%),
+      radial-gradient(circle at 90% 20%,#eef9e9 0 10%,transparent 11%),
+      var(--bg);
+  }
+  .phone{
+    width:min(100%,520px);
+    margin:auto;
+    padding:18px 14px 36px;
+  }
+  .hero{
+    height:205px;
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
+    background:linear-gradient(135deg,#dff5df,#fff0c7 55%,#ffd9d3);
+    box-shadow:var(--shadow);
+  }
+  .hero:before{
+    content:"🍊  🌿  🍊  🌿  🍊";
+    position:absolute;
+    top:24px;left:18px;right:18px;
+    font-size:35px;
+    letter-spacing:7px;
+    opacity:.9;
+  }
+  .hero:after{
+    content:"cinnamon";
+    position:absolute;
+    right:24px;bottom:30px;
+    background:#ffd6d1;
+    border:4px solid #fff8f5;
+    padding:18px 22px;
+    border-radius:30px 30px 12px 12px;
+    font-weight:800;
+    font-size:22px;
+    color:#8d6661;
+    box-shadow:0 8px 18px rgba(120,90,80,.08);
+  }
+  .brand{
+    text-align:center;
+    margin:24px 0 18px;
+  }
+  .tag{
+    display:inline-block;
+    padding:7px 18px;
+    border-radius:999px;
+    background:#fff1a9;
+    font-size:13px;
+    font-weight:800;
+    color:#856c52;
+  }
+  h1{font-size:28px;margin:10px 0 2px}
+  .subtitle{margin:0;color:var(--muted);font-size:14px}
+  .grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .menu{
+    border:0;
+    background:var(--card);
+    border-radius:27px;
+    min-height:170px;
+    padding:20px 14px;
+    box-shadow:var(--shadow);
+    color:var(--text);
+    cursor:pointer;
+    transition:.18s transform,.18s box-shadow;
+  }
+  .menu:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(183,139,129,.18)}
+  .icon{
+    width:68px;height:68px;
+    margin:0 auto 13px;
+    display:grid;place-items:center;
+    border-radius:22px;
+    font-size:31px;
+  }
+  .pink{background:var(--pink)}
+  .green{background:var(--green)}
+  .yellow{background:var(--yellow)}
+  .cream{background:var(--cream)}
+  .menu b{display:block;font-size:18px}
+  .menu span{font-size:13px;color:var(--muted);font-weight:700}
+  .reviews{
+    margin-top:18px;
+    background:rgba(255,255,255,.82);
+    border-radius:28px;
+    padding:20px;
+    box-shadow:var(--shadow);
+  }
+  .reviews h2{font-size:20px;margin:0 0 12px}
+  .review-row{display:flex;gap:8px;margin-bottom:9px}
+  input,textarea{
+    width:100%;border:1px solid #eadbd7;background:#fff;
+    border-radius:14px;padding:11px;font:inherit;color:var(--text);
+    outline:none;
+  }
+  textarea{resize:vertical;min-height:70px}
+  .add{
+    margin-top:8px;width:100%;border:0;border-radius:14px;
+    padding:12px;background:#ffd5d0;color:#694e4b;font-weight:800;cursor:pointer;
+  }
+  .review{
+    margin-top:12px;padding:12px 13px;border-radius:16px;background:#fff7f4;
+  }
+  .review strong{font-size:14px}.review p{margin:5px 0 0;font-size:14px}
+  .like{border:0;background:#fff1a9;border-radius:999px;padding:5px 10px;cursor:pointer;float:right}
+  .footer{text-align:center;margin-top:24px;color:#9b7e78;font-size:13px}
+  .modal{
+    position:fixed;inset:0;background:rgba(67,48,45,.35);
+    display:none;align-items:center;justify-content:center;padding:20px;
+    z-index:10;
+  }
+  .modal.open{display:flex}
+  .box{
+    width:min(100%,430px);background:#fffdfa;border-radius:28px;padding:24px;
+    box-shadow:0 20px 60px rgba(60,40,40,.2);
+  }
+  .box h2{margin-top:0}
+  .close{float:right;border:0;background:#f4e8e5;border-radius:50%;width:34px;height:34px;cursor:pointer}
+  .info{background:#fff4c9;border-radius:18px;padding:14px;margin:12px 0}
+  @media(max-width:380px){.grid{gap:10px}.menu{padding:16px 8px}}
+</style>
+</head>
+<body>
+<main class="phone">
+  <section class="hero" aria-label="หน้าร้าน"></section>
+
+  <header class="brand">
+    <div class="tag">🌸 BY CINNAMON 🌸</div>
+    <h1>cinnamon</h1>
+    <p class="subtitle">ร้านเติมเกม • ขายไอดี</p>
+  </header>
+
+  <section class="grid">
+    <button class="menu" onclick="openModal('สินค้า')">
+      <div class="icon pink">♡</div>
+      <b>All product</b><span>สินค้าทั้งหมด</span>
+    </button>
+    <button class="menu" onclick="openModal('ติดต่อ')">
+      <div class="icon green">★</div>
+      <b>Contact</b><span>ช่องทางการติดต่อ</span>
+    </button>
+    <button class="menu" onclick="scrollToReviews()">
+      <div class="icon yellow">☁</div>
+      <b>Review ♡</b><span>รีวิว +1</span>
+    </button>
+    <button class="menu" onclick="openModal('ชำระเงิน')">
+      <div class="icon cream">▣</div>
+      <b>Payment ♡</b><span>ช่องทางการโอน</span>
+    </button>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <h2>💬 รีวิวจากลูกค้า</h2>
+    <div class="review-row">
+      <input id="reviewName" placeholder="ชื่อของคุณ">
+    </div>
+    <textarea id="reviewText" placeholder="เขียนรีวิว หรือกด +1 ก็ได้"></textarea>
+    <button class="add" onclick="addReview()">+ เพิ่มรีวิว</button>
+    <div id="reviewList"></div>
+  </section>
+
+  <div class="footer">cinnamon ♡ ขอบคุณที่อุดหนุน</div>
+</main>
+
+<div class="modal" id="modal" onclick="closeModal(event)">
+  <div class="box">
+    <button class="close" onclick="closeModal()">×</button>
+    <h2 id="modalTitle"></h2>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+const data = {
+  "สินค้า": `
+    <div class="info">🛍️ ใส่รายการสินค้าของร้านตรงนี้ได้เลย</div>
+    <p>• เติมเกม — เริ่มต้น xx บาท</p>
+    <p>• ขายไอดีเกม — รายละเอียดตามโพสต์</p>
+  `,
+  "ติดต่อ": `
+    <div class="info">💬 ช่องทางติดต่อ</div>
+    <p>Facebook: ใส่ลิงก์ของร้าน</p>
+    <p>LINE: @yourline</p>
+  `,
+  "ชำระเงิน": `
+    <div class="info">💳 ช่องทางการโอน</div>
+    <p>ธนาคาร: ใส่ชื่อธนาคาร</p>
+    <p>เลขบัญชี: ใส่เลขบัญชี</p>
+    <p>ชื่อบัญชี: ใส่ชื่อบัญชี</p>
+    <p>สามารถใส่รูป QR Code ได้ตรงนี้</p>
+  `
+};
+
+function openModal(title){
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalContent').innerHTML = data[title] || '';
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(e){
+  if(!e || e.target.id === 'modal' || e.target.className === 'close')
+    document.getElementById('modal').classList.remove('open');
+}
+function scrollToReviews(){
+  document.getElementById('reviews').scrollIntoView({behavior:'smooth'});
+}
+function addReview(){
+  const name = document.getElementById('reviewName').value.trim() || 'ลูกค้า';
+  const text = document.getElementById('reviewText').value.trim();
+  if(!text){
+    const one = document.createElement('div');
+    one.className='review';
+    one.innerHTML = `<strong>${escapeHtml(name)}</strong><button class="like" onclick="this.textContent='♡ '+(++this.dataset.n)">+1</button><p>ให้ +1 กับร้านนี้</p>`;
+    one.querySelector('.like').dataset.n='1';
+    document.getElementById('reviewList').prepend(one);
+  }else{
+    const item=document.createElement('div');
+    item.className='review';
+    item.innerHTML=`<strong>${escapeHtml(name)}</strong><button class="like" onclick="this.textContent='♡ '+(++this.dataset.n)">+1</button><p>${escapeHtml(text)}</p>`;
+    item.querySelector('.like').dataset.n='1';
+    document.getElementById('reviewList').prepend(item);
+  }
+  document.getElementById('reviewText').value='';
+}
+function escapeHtml(s){
+  return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+}
+</script>
+</body>
+</html>
