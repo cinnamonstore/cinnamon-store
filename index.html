@@ -100,16 +100,21 @@ body{
 .card small{
   color:#a0837e;
 }
+if(type==="สินค้า"){
+content.innerHTML=`
+<div class="product">
+<h3>🔥 Free Fire</h3>
+<p>เติมเกม Free Fire</p>
+<button class="add">เลือกแพ็กเติม</button>
+</div>
 
-/* สินค้า */
-.section{
-  background:white;
-  border-radius:25px;
-  padding:20px;
-  margin-top:18px;
-  box-shadow:0 7px 20px #d9b8b322;
+<div class="product">
+<h3>⚔️ RoV</h3>
+<p>เติมเกม RoV</p>
+<button class="add">เลือกแพ็กเติม</button>
+</div>
+`;
 }
-
 .section h2{
   margin-top:0;
 }
